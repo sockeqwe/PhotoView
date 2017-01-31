@@ -59,8 +59,18 @@ public void onCreate(Bundle savedInstanceState) {
 	mAttacher = new PhotoViewAttacher(mImageView);
 }
 
+@Override
+public void onDestroy(){
+	super.onDestroy();
+	// Cleanup -  release resources
+	mAttacher.cleanup(); 
+}
+
 // If you later call mImageView.setImageDrawable/setImageBitmap/setImageResource/etc then you just need to call
 mAttacher.update();
+
+
+
 ```
 
 ## Issues With ViewGroups
